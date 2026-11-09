@@ -12,7 +12,6 @@ import {
   Loader2,
   ArrowRight,
   ShieldCheck,
-  Fingerprint
 } from 'lucide-react'
 
 export default function LoginUbsPage() {
@@ -53,52 +52,33 @@ export default function LoginUbsPage() {
   }
 
   return (
-    <main className="liquid-page relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 py-10 selection:bg-emerald-500/30">
+    <main className="ubs-login relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 py-10">
 
-      {/* BACKGROUND LIQUID GLASS */}
+      {/* BACKGROUND INSTITUCIONAL */}
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
 
-        {/* Base */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#e7f1eb] via-[#edf3ef] to-[#dcebe4]" />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#f8fcfa] via-[#edf7f3] to-[#e5f3ef]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_15%,rgba(69,155,115,0.17),transparent_45%),radial-gradient(ellipse_at_90%_85%,rgba(46,139,120,0.16),transparent_42%)]" />
 
-        {/* Luzes orgânicas */}
-
-        <div className="liquid-orb orb-one absolute rounded-full" />
-        <div className="liquid-orb orb-two absolute rounded-full" />
-        <div className="liquid-orb orb-three absolute rounded-full" />
-
-        {/* Reflexo central */}
-
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.7)_0%,transparent_65%)]" />
-
-        {/* Grade arquitetônica */}
-
-        <div className="absolute inset-0 opacity-[0.20] bg-[linear-gradient(rgba(16,100,70,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(16,100,70,0.045)_1px,transparent_1px)] bg-[size:65px_65px]" />
-
-        {/* Vinheta */}
-
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(209,232,222,0.30)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.18),transparent)]" />
 
       </div>
 
       {/* CONTEÚDO */}
 
-      <div className="relative z-10 w-full max-w-[430px]">
+      <div className="relative z-10 w-full max-w-[410px]">
 
-        {/* Indicador superior */}
+        {/* IDENTIFICAÇÃO */}
 
-        <div className="flex justify-center mb-7 login-appear">
+        <div className="flex justify-center mb-6">
 
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/90 bg-white/45 backdrop-blur-xl shadow-[0_5px_20px_rgba(30,100,70,0.06)]">
+          <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/45 border border-white/70">
 
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
 
-            <span className="text-[10px] font-semibold tracking-[0.16em] uppercase text-emerald-800">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-900/75">
               Acesso Institucional
             </span>
 
@@ -106,70 +86,50 @@ export default function LoginUbsPage() {
 
         </div>
 
-        {/* CARD PRINCIPAL */}
+        {/* CARD */}
 
-        <section className="liquid-card relative overflow-hidden rounded-[34px] p-7 sm:p-10">
+        <section className="ubs-glass-card relative rounded-[27px] p-7 sm:p-9">
 
-          {/* Camada de iluminação superior */}
+          {/* REFLEXO SUPERIOR */}
 
-          <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-
-          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-300/10 rounded-full blur-[80px] pointer-events-none" />
-
-          <div className="absolute -bottom-24 -left-20 w-64 h-64 bg-teal-300/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute top-0 left-[12%] right-[12%] h-px bg-white/90" />
 
           {/* CABEÇALHO */}
 
-          <div className="relative text-center mb-9 login-appear">
+          <header className="text-center mb-8">
 
-            {/* Ícone */}
+            <div className="inline-flex items-center justify-center w-[66px] h-[66px] rounded-[21px] bg-emerald-600/[0.09] border border-emerald-700/[0.10] mb-4">
 
-            <div className="relative inline-flex mb-5">
-
-              <div className="absolute inset-[-8px] rounded-[30px] bg-emerald-400/15 blur-xl" />
-
-              <div className="relative flex items-center justify-center w-[76px] h-[76px] rounded-[25px] liquid-icon">
-
-                <Stethoscope
-                  size={33}
-                  strokeWidth={1.7}
-                  className="text-emerald-700"
-                />
-
-                <div className="absolute top-2 left-3 w-8 h-3 rounded-full bg-white/70 blur-md" />
-
-              </div>
+              <Stethoscope
+                size={29}
+                strokeWidth={1.65}
+                className="text-emerald-700/80"
+              />
 
             </div>
 
-            {/* Nome */}
-
-            <h1 className="text-[30px] leading-tight font-semibold tracking-[-1.5px] text-slate-800">
-              Vacin<span className="text-emerald-600 font-bold">Ação</span>
+            <h1 className="text-[29px] font-semibold tracking-[-1.3px] text-slate-800">
+              Vacin<span className="text-emerald-700">Ação</span>
             </h1>
 
-            <p className="mt-2 text-[13px] text-slate-500 font-medium tracking-wide">
+            <p className="text-[12px] text-slate-500 mt-2 font-medium">
               Portal da Unidade Básica de Saúde
             </p>
 
-            <div className="flex justify-center mt-5">
-              <div className="h-[3px] w-9 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500" />
-            </div>
+            <div className="w-8 h-[3px] rounded-full bg-emerald-600/70 mx-auto mt-5" />
 
-          </div>
+          </header>
 
           {/* FORMULÁRIO */}
 
-          <form onSubmit={handleLogin} className="relative space-y-5 login-form-appear">
-
-            {/* Erro */}
+          <form onSubmit={handleLogin} className="space-y-5">
 
             {error && (
               <div
                 role="alert"
-                className="flex items-center gap-3 p-4 rounded-2xl bg-red-50/80 border border-red-200/70 text-red-700 text-xs font-medium shadow-sm animate-shake"
+                className="flex items-center gap-3 p-3.5 rounded-xl bg-red-50/80 border border-red-200/80 text-red-700 text-xs"
               >
-                <AlertCircle size={19} className="shrink-0 text-red-500" />
+                <AlertCircle size={17} className="shrink-0 opacity-80" />
                 <span>{error}</span>
               </div>
             )}
@@ -180,16 +140,18 @@ export default function LoginUbsPage() {
 
               <label
                 htmlFor="email"
-                className="block pl-1 text-[10px] font-bold tracking-[0.14em] uppercase text-slate-600"
+                className="block pl-1 text-[10px] font-bold tracking-[0.12em] uppercase text-slate-600"
               >
                 E-mail Institucional
               </label>
 
-              <div className="liquid-input-group relative">
+              <div className="relative">
 
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 transition-colors">
-                  <Mail size={18} strokeWidth={1.8} />
-                </div>
+                <Mail
+                  size={17}
+                  strokeWidth={1.7}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400/80 pointer-events-none"
+                />
 
                 <input
                   id="email"
@@ -199,7 +161,7 @@ export default function LoginUbsPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="seuemail@ubs.gov.br"
-                  className="liquid-input w-full pl-12 pr-4 py-[15px] rounded-2xl text-sm text-slate-800 placeholder:text-slate-400 outline-none"
+                  className="ubs-input w-full pl-11 pr-4 py-[14px] rounded-[13px] text-sm text-slate-800 placeholder:text-slate-400 outline-none"
                 />
 
               </div>
@@ -212,16 +174,18 @@ export default function LoginUbsPage() {
 
               <label
                 htmlFor="password"
-                className="block pl-1 text-[10px] font-bold tracking-[0.14em] uppercase text-slate-600"
+                className="block pl-1 text-[10px] font-bold tracking-[0.12em] uppercase text-slate-600"
               >
                 Senha de Acesso
               </label>
 
-              <div className="liquid-input-group relative">
+              <div className="relative">
 
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 transition-colors">
-                  <Lock size={18} strokeWidth={1.8} />
-                </div>
+                <Lock
+                  size={17}
+                  strokeWidth={1.7}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400/80 pointer-events-none"
+                />
 
                 <input
                   id="password"
@@ -231,7 +195,7 @@ export default function LoginUbsPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Digite sua senha"
-                  className="liquid-input w-full pl-12 pr-4 py-[15px] rounded-2xl text-sm text-slate-800 placeholder:text-slate-400 outline-none"
+                  className="ubs-input w-full pl-11 pr-4 py-[14px] rounded-[13px] text-sm text-slate-800 placeholder:text-slate-400 outline-none"
                 />
 
               </div>
@@ -243,22 +207,21 @@ export default function LoginUbsPage() {
             <button
               type="submit"
               disabled={loading}
-              className="liquid-button group relative overflow-hidden w-full flex items-center justify-center gap-3 py-[16px] px-5 mt-3 rounded-2xl text-white text-[13px] font-semibold tracking-wide disabled:opacity-60 disabled:cursor-not-allowed"
+              className="ubs-button group w-full flex items-center justify-center gap-2.5 py-[14px] px-4 mt-2 rounded-[13px] text-white text-[13px] font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
             >
-
-              <span className="button-shine absolute inset-0 pointer-events-none" />
 
               {loading ? (
                 <>
-                  <Loader2 size={18} className="animate-spin" />
+                  <Loader2 size={17} className="animate-spin" />
                   <span>Autenticando...</span>
                 </>
               ) : (
                 <>
                   <span>Entrar no Sistema</span>
                   <ArrowRight
-                    size={17}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
+                    size={16}
+                    strokeWidth={2}
+                    className="transition-transform duration-200 group-hover:translate-x-1"
                   />
                 </>
               )}
@@ -269,261 +232,139 @@ export default function LoginUbsPage() {
 
           {/* RODAPÉ */}
 
-          <div className="relative mt-9 pt-6 border-t border-white/70">
+          <footer className="mt-8 pt-5 border-t border-slate-200/70">
 
-            <div className="flex items-center justify-center gap-2 mb-3">
+            <div className="flex items-center justify-center gap-2 mb-2">
 
-              <ShieldCheck size={15} className="text-emerald-600" />
+              <ShieldCheck
+                size={15}
+                strokeWidth={1.8}
+                className="text-emerald-700/75"
+              />
 
-              <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-slate-600">
+              <span className="text-[10px] font-semibold tracking-[0.11em] uppercase text-slate-600">
                 Ambiente Protegido
               </span>
 
             </div>
 
-            <p className="text-center text-[10px] leading-relaxed text-slate-400 font-medium">
+            <p className="text-center text-[10px] text-slate-400">
               Protocolo de Imunização Municipal
             </p>
 
-          </div>
-
-          {/* Reflexo inferior */}
-
-          <div className="absolute bottom-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-emerald-300/60 to-transparent" />
+          </footer>
 
         </section>
 
         {/* RODAPÉ EXTERNO */}
 
-        <div className="mt-7 text-center login-appear">
+        <div className="mt-6 text-center">
 
-          <div className="inline-flex items-center justify-center gap-2 text-[10px] text-slate-400 font-medium tracking-wide">
-
-            <Fingerprint size={13} className="text-emerald-600/70" />
-
-            <span>Sistema de acesso institucional seguro</span>
-
-          </div>
+          <p className="text-[10px] text-slate-500/80 font-medium tracking-wide">
+            Sistema de acesso institucional seguro
+          </p>
 
         </div>
 
       </div>
 
-      {/* ESTILIZAÇÃO LIQUID GLASS */}
+      {/* ESTILIZAÇÃO OTIMIZADA */}
 
       <style jsx global>{`
 
-        .liquid-page {
+        .ubs-login {
           isolation: isolate;
         }
 
-        .liquid-orb {
-          pointer-events: none;
-          filter: blur(75px);
-          will-change: transform;
-        }
+        /* VIDRO INSTITUCIONAL */
 
-        .orb-one {
-          width: 520px;
-          height: 520px;
-          top: -180px;
-          left: -140px;
-          background: radial-gradient(
-            circle,
-            rgba(52, 211, 153, 0.28) 0%,
-            rgba(110, 231, 183, 0.12) 45%,
-            transparent 72%
-          );
-          animation: liquidFloatOne 18s ease-in-out infinite alternate;
-        }
+        .ubs-glass-card {
+          background: rgba(255, 255, 255, 0.68);
 
-        .orb-two {
-          width: 570px;
-          height: 570px;
-          right: -170px;
-          bottom: -220px;
-          background: radial-gradient(
-            circle,
-            rgba(45, 212, 191, 0.25) 0%,
-            rgba(94, 234, 212, 0.10) 48%,
-            transparent 72%
-          );
-          animation: liquidFloatTwo 22s ease-in-out infinite alternate;
-        }
+          -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
 
-        .orb-three {
-          width: 340px;
-          height: 340px;
-          left: 45%;
-          top: 38%;
-          background: radial-gradient(
-            circle,
-            rgba(167, 243, 208, 0.30) 0%,
-            transparent 70%
-          );
-          animation: liquidFloatThree 16s ease-in-out infinite alternate;
-        }
-
-        /* CARD DE VIDRO */
-
-        .liquid-card {
-          background:
-            linear-gradient(
-              145deg,
-              rgba(255,255,255,0.88) 0%,
-              rgba(255,255,255,0.66) 45%,
-              rgba(245,255,250,0.74) 100%
-            );
-
-          -webkit-backdrop-filter: blur(35px) saturate(180%);
-          backdrop-filter: blur(35px) saturate(180%);
-
-          border: 1px solid rgba(255,255,255,0.92);
+          border: 1px solid rgba(255, 255, 255, 0.82);
 
           box-shadow:
-            0 35px 90px rgba(28, 94, 68, 0.10),
-            0 12px 35px rgba(30, 90, 70, 0.06),
-            inset 0 1px 0 rgba(255,255,255,1),
-            inset 0 -1px 0 rgba(255,255,255,0.45),
-            inset 1px 0 0 rgba(255,255,255,0.50);
+            0 20px 55px rgba(35, 82, 61, 0.10),
+            0 4px 14px rgba(35, 82, 61, 0.04),
+            inset 0 1px 0 rgba(255,255,255,0.85);
 
-          animation: cardAppear 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+          animation: ubsEnter 0.45s ease-out both;
         }
 
-        /* ÍCONE */
+        /* CAMPOS */
 
-        .liquid-icon {
-          background:
-            linear-gradient(
-              145deg,
-              rgba(255,255,255,0.98),
-              rgba(218,250,234,0.78)
-            );
-
-          border: 1px solid rgba(255,255,255,0.95);
+        .ubs-input {
+          background: rgba(255,255,255,0.53);
+          border: 1px solid rgba(148,163,184,0.28);
 
           box-shadow:
-            0 12px 30px rgba(16, 185, 129, 0.13),
-            inset 0 1px 2px rgba(255,255,255,1),
-            inset 0 -1px 2px rgba(16,185,129,0.08);
-        }
-
-        /* INPUTS */
-
-        .liquid-input {
-          background: rgba(255,255,255,0.48);
-          border: 1px solid rgba(148,163,184,0.22);
-
-          box-shadow:
-            inset 0 1px 3px rgba(15,23,42,0.025),
-            0 2px 8px rgba(15,23,42,0.025);
+            inset 0 1px 2px rgba(15,23,42,0.025);
 
           transition:
-            background 0.3s ease,
-            border-color 0.3s ease,
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
+            border-color 0.18s ease,
+            background 0.18s ease,
+            box-shadow 0.18s ease;
         }
 
-        .liquid-input-group:focus-within > div:first-child {
-          color: #059669;
+        .ubs-input:hover {
+          border-color: rgba(16,185,129,0.35);
         }
 
-        .liquid-input:focus {
-          background: rgba(255,255,255,0.88);
-          border-color: rgba(16,185,129,0.55);
+        .ubs-input:focus {
+          background: rgba(255,255,255,0.92);
+          border-color: rgba(5,150,105,0.65);
 
           box-shadow:
-            0 0 0 4px rgba(16,185,129,0.09),
-            0 5px 18px rgba(16,185,129,0.06),
-            inset 0 1px 2px rgba(255,255,255,1);
-
-          transform: translateY(-1px);
+            0 0 0 3px rgba(16,185,129,0.10);
         }
 
         /* BOTÃO */
 
-        .liquid-button {
+        .ubs-button {
           background: linear-gradient(
             110deg,
-            #059669 0%,
-            #10a77b 48%,
-            #0d9488 100%
+            #078b62,
+            #079d78
           );
 
-          border: 1px solid rgba(255,255,255,0.35);
+          border: 1px solid rgba(255,255,255,0.25);
 
           box-shadow:
-            0 10px 25px rgba(5,150,105,0.22),
-            0 4px 10px rgba(5,150,105,0.10),
-            inset 0 1px 0 rgba(255,255,255,0.30),
-            inset 0 -1px 0 rgba(0,0,0,0.08);
+            0 5px 14px rgba(5,150,105,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.18);
 
           transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease,
-            filter 0.3s ease;
+            background 0.18s ease,
+            box-shadow 0.18s ease,
+            transform 0.18s ease;
         }
 
-        .liquid-button:hover:not(:disabled) {
-          transform: translateY(-2px);
-
-          filter: brightness(1.06);
-
-          box-shadow:
-            0 15px 32px rgba(5,150,105,0.28),
-            0 5px 12px rgba(5,150,105,0.12),
-            inset 0 1px 0 rgba(255,255,255,0.40);
-        }
-
-        .liquid-button:active:not(:disabled) {
-          transform: scale(0.985);
-        }
-
-        .button-shine {
+        .ubs-button:hover:not(:disabled) {
           background: linear-gradient(
             110deg,
-            transparent 20%,
-            rgba(255,255,255,0.20) 45%,
-            transparent 70%
+            #067b58,
+            #078b6b
           );
 
-          transform: translateX(-120%);
-          transition: transform 0.8s ease;
+          box-shadow:
+            0 7px 18px rgba(5,150,105,0.23);
+
+          transform: translateY(-1px);
         }
 
-        .liquid-button:hover .button-shine {
-          transform: translateX(120%);
+        .ubs-button:active:not(:disabled) {
+          transform: translateY(0) scale(0.99);
         }
 
         /* ENTRADA */
 
-        .login-appear {
-          animation: contentAppear 0.8s ease both;
-        }
-
-        .login-form-appear {
-          animation: contentAppear 1s ease 0.15s both;
-        }
-
-        @keyframes cardAppear {
+        @keyframes ubsEnter {
           from {
             opacity: 0;
-            transform: translateY(25px) scale(0.97);
-            filter: blur(8px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes contentAppear {
-          from {
-            opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(10px);
           }
 
           to {
@@ -532,68 +373,33 @@ export default function LoginUbsPage() {
           }
         }
 
-        @keyframes liquidFloatOne {
-          from {
-            transform: translate(0, 0) scale(1);
-          }
-
-          to {
-            transform: translate(80px, 60px) scale(1.15);
-          }
-        }
-
-        @keyframes liquidFloatTwo {
-          from {
-            transform: translate(0, 0) scale(1);
-          }
-
-          to {
-            transform: translate(-90px, -65px) scale(1.12);
-          }
-        }
-
-        @keyframes liquidFloatThree {
-          from {
-            transform: translate(-30px, 20px);
-          }
-
-          to {
-            transform: translate(40px, -50px);
-          }
-        }
-
         /* ACESSIBILIDADE */
 
         @media (prefers-reduced-motion: reduce) {
-          .liquid-orb,
-          .liquid-card,
-          .login-appear,
-          .login-form-appear {
-            animation: none !important;
+          .ubs-glass-card {
+            animation: none;
           }
 
-          .liquid-button,
-          .liquid-input,
-          .button-shine {
+          .ubs-input,
+          .ubs-button,
+          .ubs-button svg {
             transition: none !important;
+          }
+        }
+
+        /* FALLBACK PARA NAVEGADORES SEM BLUR */
+
+        @supports not (backdrop-filter: blur(14px)) {
+          .ubs-glass-card {
+            background: rgba(248,252,249,0.96);
           }
         }
 
         /* MOBILE */
 
         @media (max-width: 480px) {
-          .liquid-card {
-            border-radius: 28px;
-          }
-
-          .orb-one {
-            width: 320px;
-            height: 320px;
-          }
-
-          .orb-two {
-            width: 350px;
-            height: 350px;
+          .ubs-glass-card {
+            border-radius: 23px;
           }
         }
 
