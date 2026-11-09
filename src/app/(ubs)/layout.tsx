@@ -1,6 +1,9 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
+// ADICIONE ESTA LINHA: Avisa o Next.js que esta rota depende de cookies em tempo real
+export const dynamic = 'force-dynamic'
+
 export default async function UbsLayout({
   children,
 }: {
