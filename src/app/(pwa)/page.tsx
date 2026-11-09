@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { AlertCircle, CheckCircle2, Clock, Syringe } from 'lucide-react'
+import { connection } from 'next/server' // ADICIONE AQUI
 
 // Utilidade para formatar datas no padrão BR
 const formatarData = (dataStr: string) => {
@@ -10,8 +11,9 @@ const formatarData = (dataStr: string) => {
 }
 
 export default async function HomePWA() {
+  await connection() // ADICIONE AQUI
+
   const supabase = await createClient()
-  
   // 1. Verifica quem é o usuário
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')

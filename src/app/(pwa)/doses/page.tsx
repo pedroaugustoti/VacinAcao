@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { CheckCircle2, Clock, AlertCircle, Calendar } from 'lucide-react'
+import { connection } from 'next/server' // ADICIONE AQUI
 
 // Utilidade para formatar datas
 const formatarData = (dataStr: string) => {
@@ -11,8 +12,10 @@ const formatarData = (dataStr: string) => {
 }
 
 export default async function HistoricoDoses() {
-  const supabase = await createClient()
+  await connection() // ADICIONE AQUI
   
+  const supabase = await createClient()
+
   // 1. Verifica autenticação
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
