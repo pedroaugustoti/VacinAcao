@@ -1,37 +1,30 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-
-// ADICIONE ESTA LINHA: Avisa o Next.js que esta rota depende de cookies em tempo real
-export const dynamic = 'force-dynamic'
+import { connection } from 'next/server' // 1. Importe connection
 
 export default async function UbsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // 1. Inicializa o Supabase no lado do servidor
+  // 2. Chame connection para destravar a pré-renderização
+  await connection() 
+
   const supabase = await createClient()
 
-  // 2. Pega o usuário logado da sessão atual
   const { data: { user }, error: authError } = await supabase.auth.getUser()
 
   if (authError || !user) {
-    // Se por algum motivo chegou aqui sem sessão, manda pro login
     redirect('/login')
   }
 
-  // 3. Consulta a tabela 'perfis' para descobrir o nível de acesso (role)
-  // O .single() garante que retorne apenas 1 objeto, não um array
   const { data: perfil, error: perfilError } = await supabase
     .from('perfis')
     .select('role')
     .eq('id', user.id)
     .single()
 
-  // 4. A Trava de Segurança
-  // Se não achar perfil (pacientes não têm registro nessa tabela) ou se a role não for autorizada
   if (perfilError || !perfil || (perfil.role !== 'ubs' && perfil.role !== 'admin')) {
-    // Redireciona o paciente de volta para a interface do celular (PWA)
     redirect('/')
   }
 
