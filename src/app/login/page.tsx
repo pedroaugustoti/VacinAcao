@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { ShieldPlus, Lock, Mail, AlertCircle, Loader2 } from 'lucide-react'
+import { Stethoscope, Lock, Mail, AlertCircle, Loader2, ArrowRight } from 'lucide-react'
 
 export default function LoginUbsPage() {
   const [email, setEmail] = useState('')
@@ -34,38 +34,45 @@ export default function LoginUbsPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 p-4">
-      {/* Container Principal com Efeito Glassmorphism */}
-      <div className="w-full max-w-md bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-emerald-100 p-8 sm:p-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50/50 to-cyan-50 p-4 relative overflow-hidden">
+      
+      {/* Elementos decorativos de fundo estilo Liquid Glass/Soft Glow */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      {/* Card Principal com Efeito Liquid Glass refinado */}
+      <div className="w-full max-w-md bg-white/70 backdrop-blur-2xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/80 overflow-hidden p-8 sm:p-10 relative z-10 transition-all">
         
-        {/* Cabeçalho com Identidade Hospitalar / Verde Clínico */}
+        {/* Cabeçalho com Verde Suave Hospitalar */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-lg shadow-emerald-600/30 mb-4">
-            <ShieldPlus size={32} strokeWidth={2.5} />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-lg shadow-emerald-500/20 mb-4 ring-4 ring-emerald-50">
+            <Stethoscope size={30} strokeWidth={2.2} />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             Vacin<span className="text-emerald-600">Ação</span>
           </h1>
-          <p className="text-sm font-medium text-emerald-800 mt-1">
-            Portal Restrito • Unidade Básica de Saúde
-          </p>
+          <div className="inline-block mt-1 px-3 py-0.5 rounded-full bg-emerald-100/70 border border-emerald-200/50">
+            <p className="text-xs font-semibold text-emerald-800 tracking-wide uppercase">
+              Portal da Unidade Básica de Saúde
+            </p>
+          </div>
         </div>
 
         {/* Formulário */}
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-4">
           {error && (
-            <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-3 rounded-r-lg text-red-700 text-sm animate-shake">
-              <AlertCircle size={20} className="shrink-0 text-red-500" />
+            <div className="flex items-center gap-3 bg-red-50/90 border border-red-200 p-3.5 rounded-2xl text-red-700 text-xs font-medium animate-shake">
+              <AlertCircle size={18} className="shrink-0 text-red-500" />
               <span>{error}</span>
             </div>
           )}
 
-          <div className="space-y-1">
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 pl-1">
               E-mail Institucional
             </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600 transition-colors">
                 <Mail size={18} />
               </div>
               <input
@@ -74,17 +81,17 @@ export default function LoginUbsPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="enfermeira@ubs.gov.br"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/80 border border-gray-200/80 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 focus:bg-white shadow-sm transition-all"
               />
             </div>
           </div>
 
-          <div className="space-y-1">
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 pl-1">
               Senha de Acesso
             </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600 transition-colors">
                 <Lock size={18} />
               </div>
               <input
@@ -93,7 +100,7 @@ export default function LoginUbsPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/80 border border-gray-200/80 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 focus:bg-white shadow-sm transition-all"
               />
             </div>
           </div>
@@ -101,23 +108,26 @@ export default function LoginUbsPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
+            className="w-full mt-2 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-medium text-sm rounded-2xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 disabled:opacity-70 group"
           >
             {loading ? (
               <>
-                <Loader2 size={20} className="animate-spin" />
-                <span>Autenticando credenciais...</span>
+                <Loader2 size={18} className="animate-spin" />
+                <span>Autenticando...</span>
               </>
             ) : (
-              <span>Acessar Painel da UBS</span>
+              <>
+                <span>Entrar no Sistema</span>
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </>
             )}
           </button>
         </form>
 
-        {/* Rodapé do Card */}
-        <div className="mt-8 text-center border-t border-gray-100 pt-4">
-          <p className="text-xs text-gray-400">
-            Sistema Seguro Integrado ao Protocolo Antirrábico
+        {/* Rodapé Limpo */}
+        <div className="mt-8 text-center border-t border-gray-100/80 pt-5">
+          <p className="text-[11px] text-gray-400 font-medium tracking-wide">
+            Ambiente Seguro • Protocolo de Imunização Municipal
           </p>
         </div>
 
