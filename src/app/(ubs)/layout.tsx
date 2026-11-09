@@ -1,15 +1,14 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { connection } from 'next/server' // 1. Importe connection
+
+// Nova flag exigida pelo Next.js 16.4+ para rotas que usam cookies/sessão
+export const instant = false 
 
 export default async function UbsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // 2. Chame connection para destravar a pré-renderização
-  await connection() 
-
   const supabase = await createClient()
 
   const { data: { user }, error: authError } = await supabase.auth.getUser()
