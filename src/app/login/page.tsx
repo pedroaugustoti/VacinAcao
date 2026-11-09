@@ -34,25 +34,41 @@ export default function LoginUbsPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50/50 to-cyan-50 p-4 relative overflow-hidden">
+    <main className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a1410] px-4 selection:bg-emerald-500 selection:text-white">
       
-      {/* Elementos decorativos de fundo estilo Liquid Glass/Soft Glow */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl pointer-events-none"></div>
-
-      {/* Card Principal com Efeito Liquid Glass refinado */}
-      <div className="w-full max-w-md bg-white/70 backdrop-blur-2xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/80 overflow-hidden p-8 sm:p-10 relative z-10 transition-all">
+      {/* Background Dinâmico com Luzes Orgânicas Líquidas (Apple Style) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Esfera de luz verde menta superior esquerda */}
+        <div className="absolute -top-[20%] -left-[10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-br from-emerald-600/30 via-teal-600/20 to-transparent blur-[120px] animate-pulse duration-1000"></div>
         
-        {/* Cabeçalho com Verde Suave Hospitalar */}
+        {/* Esfera de luz teal/azulada inferior direita */}
+        <div className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-tl from-teal-700/25 via-emerald-800/15 to-transparent blur-[140px]"></div>
+
+        {/* Ponto de luz sutil central */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35vw] h-[35vw] rounded-full bg-emerald-500/10 blur-[100px]"></div>
+        
+        {/* Grid sutil de textura tecnológica de fundo */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40"></div>
+      </div>
+
+      {/* Card Principal - Liquid Glass Autêntico */}
+      <div className="relative z-10 w-full max-w-[420px] rounded-[32px] p-8 sm:p-10 backdrop-blur-[32px] bg-white/[0.07] border border-white/[0.15] shadow-[0_30px_100px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2)] transition-all duration-500">
+        
+        {/* Linha de reflexo de luz superior no vidro */}
+        <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+
+        {/* Cabeçalho */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-lg shadow-emerald-500/20 mb-4 ring-4 ring-emerald-50">
-            <Stethoscope size={30} strokeWidth={2.2} />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-[22px] bg-gradient-to-b from-emerald-400/20 to-emerald-600/10 border border-emerald-400/30 text-emerald-400 shadow-[0_8px_20px_rgba(16,185,129,0.15)] mb-4 backdrop-blur-md">
+            <Stethoscope size={28} strokeWidth={2} />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            Vacin<span className="text-emerald-600">Ação</span>
+          
+          <h1 className="text-2xl font-semibold tracking-tight text-white/95">
+            Vacin<span className="text-emerald-400 font-bold">Ação</span>
           </h1>
-          <div className="inline-block mt-1 px-3 py-0.5 rounded-full bg-emerald-100/70 border border-emerald-200/50">
-            <p className="text-xs font-semibold text-emerald-800 tracking-wide uppercase">
+          
+          <div className="inline-block mt-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-md">
+            <p className="text-[11px] font-medium text-emerald-300 tracking-wider uppercase">
               Portal da Unidade Básica de Saúde
             </p>
           </div>
@@ -61,18 +77,18 @@ export default function LoginUbsPage() {
         {/* Formulário */}
         <form onSubmit={handleLogin} className="space-y-4">
           {error && (
-            <div className="flex items-center gap-3 bg-red-50/90 border border-red-200 p-3.5 rounded-2xl text-red-700 text-xs font-medium animate-shake">
-              <AlertCircle size={18} className="shrink-0 text-red-500" />
+            <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 p-3.5 rounded-2xl text-red-300 text-xs font-medium backdrop-blur-md animate-shake">
+              <AlertCircle size={18} className="shrink-0 text-red-400" />
               <span>{error}</span>
             </div>
           )}
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 pl-1">
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-white/60 pl-1">
               E-mail Institucional
             </label>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600 transition-colors">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/40 group-focus-within:text-emerald-400 transition-colors">
                 <Mail size={18} />
               </div>
               <input
@@ -81,17 +97,17 @@ export default function LoginUbsPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="enfermeira@ubs.gov.br"
-                className="w-full pl-11 pr-4 py-3.5 bg-white/80 border border-gray-200/80 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 focus:bg-white shadow-sm transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-black/20 border border-white/10 rounded-2xl text-white placeholder-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400/50 focus:bg-black/40 backdrop-blur-xl shadow-inner transition-all"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 pl-1">
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-white/60 pl-1">
               Senha de Acesso
             </label>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600 transition-colors">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/40 group-focus-within:text-emerald-400 transition-colors">
                 <Lock size={18} />
               </div>
               <input
@@ -100,7 +116,7 @@ export default function LoginUbsPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-11 pr-4 py-3.5 bg-white/80 border border-gray-200/80 rounded-2xl text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 focus:bg-white shadow-sm transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-black/20 border border-white/10 rounded-2xl text-white placeholder-white/25 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400/50 focus:bg-black/40 backdrop-blur-xl shadow-inner transition-all"
               />
             </div>
           </div>
@@ -108,11 +124,11 @@ export default function LoginUbsPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-medium text-sm rounded-2xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 disabled:opacity-70 group"
+            className="w-full mt-3 py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-[0.99] text-white font-medium text-sm rounded-2xl shadow-[0_10px_25px_rgba(16,185,129,0.3)] border border-emerald-400/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 group cursor-pointer"
           >
             {loading ? (
               <>
-                <Loader2 size={18} className="animate-spin" />
+                <Loader2 size={18} className="animate-spin text-white" />
                 <span>Autenticando...</span>
               </>
             ) : (
@@ -124,14 +140,14 @@ export default function LoginUbsPage() {
           </button>
         </form>
 
-        {/* Rodapé Limpo */}
-        <div className="mt-8 text-center border-t border-gray-100/80 pt-5">
-          <p className="text-[11px] text-gray-400 font-medium tracking-wide">
+        {/* Rodapé do Card */}
+        <div className="mt-8 text-center border-t border-white/10 pt-5">
+          <p className="text-[11px] text-white/40 font-medium tracking-wide">
             Ambiente Seguro • Protocolo de Imunização Municipal
           </p>
         </div>
 
       </div>
-    </div>
+    </main>
   )
 }
