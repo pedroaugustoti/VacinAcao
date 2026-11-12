@@ -10,7 +10,9 @@ export default async function HistoricoDoses() {
   return (
     <div className="p-6">
       <header className="mb-6">
+        <p className="va-eyebrow mb-2">Seu calendário</p>
         <h1 className="text-2xl font-bold text-gray-900">Histórico de Doses</h1>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">Confira as datas previstas e a situação de cada dose registrada pela equipe.</p>
       </header>
 
       {/* O Suspense segura o carregamento e exibe o Skeleton */}

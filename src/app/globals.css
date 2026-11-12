@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f7fa;
+  --foreground: #19334a;
+  --va-blue: #1b4e83;
+  --va-teal: #087c78;
+  --va-border: #dce6ee;
+  --va-muted: #52677d;
+  --va-shadow: 0 4px 24px rgb(25 59 85 / 5%);
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif; }
+html { scroll-padding-top: 8rem; }
+::selection { background: #ccece9; color: #173c50; }
+:where(a,button,input,select,textarea,summary):focus-visible { outline: 3px solid #167c9a; outline-offset: 3px; }
+input[type="checkbox"] { accent-color: var(--va-teal); min-width: 18px; min-height: 18px; }
+button:not(:disabled), summary { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Presentation only: calculations, status and access rules remain in their owners. */
+.va-shell, .va-patient { color: var(--foreground); background: var(--background); }
+.va-workspace { background: radial-gradient(ellipse 65% 28% at 100% 0%, #e3f3f3 0, transparent 75%), var(--background); }
+.va-shell .va-topbar { min-height: 76px; background: rgb(255 255 255 / 95%); border-color: var(--va-border); backdrop-filter: blur(16px); }
+.va-shell .va-sidebar { background: #fff; border-right: 1px solid var(--va-border); }
+.va-shell .va-sidebar-inner { background: #fff; color: #3d536a; }
+.va-shell .va-sidebar-inner nav a { min-height: 48px; color: #465d74; border: 1px solid transparent; }
+.va-shell .va-sidebar-inner nav a:hover { color: var(--va-blue); background: #f1f6fb; }
+.va-shell .va-sidebar-inner nav a[aria-current="page"] { color: #164d77; background: #eaf3fb; border-color: #d1e4f2; box-shadow: none; }
+.va-shell .va-sidebar-inner nav a[aria-current="page"] > span:first-child { background: var(--va-blue); }
+.va-shell .va-sidebar-inner nav a[aria-current="page"] svg { color: var(--va-blue); }
+.va-shell .va-mobile-header { background: #fff; border-color: var(--va-border); }
+.va-sidebar-brand { background: linear-gradient(135deg, #1b4e83, #07817c); color: #fff; }
+.va-sidebar-context { background: #f0f8f8; border: 1px solid #d8ecea; }
+.va-sidebar-footer { background: #f8fafc; }
+.va-shell main header h1 { color: #193b59; letter-spacing: -.035em; line-height: 1.2; overflow-wrap: anywhere; }
+.va-shell main :where(.text-slate-400) { color: #60738a; }
+.va-shell main :where(.text-\[10px\],.text-\[11px\]) { font-size: .75rem; line-height: 1.5; }
+.va-shell main :where(input:not([type="checkbox"]),select,textarea) { border-color: #cbd9e4; border-radius: 12px; background: #fff; }
+.va-shell main :where(input:not([type="checkbox"]),select) { min-height: 44px; }
+.va-shell main :where(input,select,textarea):focus-visible { outline: 2px solid var(--va-teal); outline-offset: 2px; box-shadow: 0 0 0 5px #e6f5f2; }
+.va-shell main :where(input,textarea)::placeholder { color: #6b7e92; opacity: 1; }
+.va-shell main table { border-collapse: collapse; }
+.va-shell main table thead { background: #f1f6fb; color: #4f6680; }
+.va-shell main table th { font-size: .72rem; letter-spacing: .04em; font-weight: 650; }
+.va-shell main table :where(td,th) { vertical-align: middle; }
+.va-shell main table tbody tr:hover { background: #f5fafc; }
+.va-shell main :where(a,button) { transition: background-color .15s, border-color .15s, box-shadow .15s; }
+.va-shell main :where(a,button).bg-emerald-700 { background: var(--va-teal); }
+.va-shell main :where(a,button).bg-emerald-700:hover { background: #086762; }
+.va-panel { background: #fff; border: 1px solid var(--va-border); border-radius: 20px; box-shadow: var(--va-shadow); }
+.va-page-header { padding-bottom: 8px; }
+.va-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--va-teal); }
+.va-welcome { background: linear-gradient(110deg,#e8f2fb 0%,#edf8f6 100%); border: 1px solid #d4e6ee; }
+.va-metric { background: #fff; border: 1px solid var(--va-border); border-radius: 18px; box-shadow: var(--va-shadow); }
+.va-metric-value { font-size: clamp(2rem,3vw,2.75rem); font-weight: 750; letter-spacing: -.045em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.va-metric[data-tone="red"] { border-color: #efd5d7; background: linear-gradient(135deg,#fff,#fff7f7); }
+.va-metric[data-tone="red"] .va-metric-value { color: #a72c3c; }
+.va-priority-row { box-shadow: inset 3px 0 #d55e66; background: #fffafb; }
+.va-shell main tr.va-priority-row:hover { background: #fff1f2; }
+.va-queue-item { border-left: 3px solid #de7c83; }
+.va-queue-item[data-followup="due"] { border-left-color: #b56a15; background: #fffcf5; }
+.va-table-scroll { overflow-x: auto; overscroll-behavior-x: contain; }
+.va-table-scroll:focus-visible { outline: 3px solid #167c9a; outline-offset: -3px; }
+.va-empty { border: 1px dashed #cedee8; border-radius: 16px; background: #f8fbfd; padding: 2rem 1.5rem; color: var(--va-muted); }
+.va-section-anchor { scroll-margin-top: 9rem; }
+.va-form-section { border: 1px solid #e0e9ef; border-radius: 16px; padding: 1.25rem; background: #fbfdfe; }
+.va-step { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 9px; background: #e7f2fa; color: #245780; font-size: .75rem; font-weight: 700; }
+.va-skeleton { background: linear-gradient(100deg,#e8eef4 20%,#f5f8fb 45%,#e8eef4 70%); background-size: 200% 100%; animation: va-loading 1.8s ease-in-out infinite; }
+@keyframes va-loading { to { background-position: -200% 0; } }
+
+/* Patient area: same palette, mobile navigation retained. */
+.va-patient { background: radial-gradient(ellipse at top,#e4f1f5,transparent 70%),#edf3f7; }
+.va-patient-frame { background: #f6f9fc; box-shadow: 0 0 70px rgb(24 63 89 / 8%); }
+.va-patient-brand { background: #fff; border-bottom: 1px solid var(--va-border); }
+.va-patient-hero { background: linear-gradient(135deg,#1b4e83,#146981 65%,#087c78); }
+.va-patient :where(.text-gray-500) { color: #576c81; }
+.va-patient :where(.text-gray-900) { color: #193b59; }
+.va-patient section { border-color: var(--va-border); }
+.va-patient-nav a { min-height: 52px; }
+.va-patient-nav a[aria-current="page"] { color: #096d69; background: #e7f5f1; }
+.va-dose-card { position: relative; border-left-width: 4px; border-left-color: #72a2c5; }
+.va-dose-card[data-tone="overdue"] { border-left-color: #c44d5c; }
+.va-dose-card[data-tone="recorded"] { border-left-color: #159180; }
+@media(max-width:767px) {
+  .va-shell .va-main { padding-top: 1.5rem; }
+  .va-shell .va-topbar { top: 64px; min-height: 60px; padding: .65rem 1rem; }
+  .va-shell main header h1 { font-size: 1.65rem; }
+  .va-shell main :where(input:not([type="checkbox"]),select,textarea) { font-size: 16px; }
+  .va-form-section { padding: 1rem; }
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

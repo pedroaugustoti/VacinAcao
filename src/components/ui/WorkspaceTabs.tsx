@@ -1,0 +1,10 @@
+'use client'
+import {useEffect,useId,useRef,useState,type ReactNode,type KeyboardEvent} from 'react'
+type Item={id:string;label:string;content:ReactNode;aliases?:string[]}
+export default function WorkspaceTabs({items,label}:{items:Item[];label:string}){
+ const [selected,setSelected]=useState(items[0].id),uid=useId(),buttons=useRef<(HTMLButtonElement|null)[]>([])
+ useEffect(()=>{const read=()=>{const hash=window.location.hash.slice(1),item=items.find(i=>i.id===hash||i.aliases?.includes(hash));if(item)setSelected(item.id)};const timer=setTimeout(read,0);window.addEventListener('hashchange',read);return()=>{clearTimeout(timer);window.removeEventListener('hashchange',read)}},[items])
+ function choose(index:number){const item=items[index];setSelected(item.id);window.history.replaceState(null,'','#'+item.id)}
+ function key(e:KeyboardEvent<HTMLButtonElement>,index:number){let next=index;if(e.key==='ArrowRight')next=(index+1)%items.length;else if(e.key==='ArrowLeft')next=(index+items.length-1)%items.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=items.length-1;else return;e.preventDefault();choose(next);buttons.current[next]?.focus()}
+ return <div className="space-y-6"><div role="tablist" aria-label={label} className="flex gap-1 overflow-x-auto rounded-2xl border border-slate-200 bg-white p-1.5">{items.map((item,index)=><button key={item.id} ref={node=>{buttons.current[index]=node}} id={`${uid}-tab-${item.id}`} role="tab" aria-selected={selected===item.id} aria-controls={`${uid}-panel-${item.id}`} tabIndex={selected===item.id?0:-1} onClick={()=>choose(index)} onKeyDown={e=>key(e,index)} className={`min-h-11 shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold ${selected===item.id?'bg-sky-50 text-sky-900':'text-slate-600 hover:bg-slate-50'}`}>{item.label}</button>)}</div>{items.map(item=><div key={item.id} id={`${uid}-panel-${item.id}`} role="tabpanel" aria-labelledby={`${uid}-tab-${item.id}`} hidden={selected!==item.id} tabIndex={0} className="min-w-0 space-y-6">{item.content}</div>)}</div>
+}

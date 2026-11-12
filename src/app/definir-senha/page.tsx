@@ -1,0 +1,11 @@
+'use client'
+import {useState,type FormEvent} from 'react'
+import {createClient} from '@/lib/supabase/client'
+import Link from 'next/link'
+export default function DefinirSenha(){
+ const [busy,setBusy]=useState(false),[message,setMessage]=useState(''),[done,setDone]=useState(false)
+ async function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();if(busy)return;const form=e.currentTarget,f=new FormData(form),password=String(f.get('senha')||'');if(password.length<12||password!==f.get('confirmacao')){setMessage('Use ao menos 12 caracteres e repita a mesma senha.');return}setBusy(true)
+  try{const s=createClient(),user=await s.auth.getUser();if(user.error||!user.data.user)throw new Error('Link expirado ou sessão ausente. Solicite nova orientação à equipe.');const r=await s.auth.updateUser({password});if(r.error)throw new Error('Senha não confirmada. Confira a política de senha ou solicite novo link.');form.reset();await s.auth.signOut();setDone(true);setMessage('Senha atualizada. Entre novamente com seu identificador individual.')}catch(e){setMessage(e instanceof Error?e.message:'Não foi possível confirmar a senha.')}finally{setBusy(false)}
+ }
+ return <main className="flex min-h-screen items-center justify-center bg-slate-50 p-6"><section className="va-panel w-full max-w-md p-7"><h1 className="text-2xl font-bold">Definir senha de acesso</h1><p className="mt-3 text-sm text-slate-600">Use somente uma sessão individual confirmada pelo link autorizado ou procedimento assistido. Não compartilhe sua senha.</p>{!done&&<form onSubmit={submit} className="mt-5 space-y-4"><label className="block text-sm">Nova senha<input name="senha" type="password" autoComplete="new-password" minLength={12} required className="mt-1 w-full rounded-xl border p-3"/></label><label className="block text-sm">Repita a senha<input name="confirmacao" type="password" autoComplete="new-password" minLength={12} required className="mt-1 w-full rounded-xl border p-3"/></label><button disabled={busy} className="rounded-xl bg-teal-700 px-5 py-3 font-semibold text-white disabled:opacity-50">{busy?'Confirmando…':'Salvar senha'}</button></form>}<p role="status" className="mt-4 text-sm">{message}</p><Link href="/login" className="mt-5 inline-block font-semibold text-teal-800">Voltar ao login</Link></section></main>
+}

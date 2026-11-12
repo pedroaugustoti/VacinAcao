@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Acompanhamento e adesão ao protocolo antirrábico',
     start_url: '/',
     display: 'standalone',
-    background_color: '#f9fafb', // bg-gray-50
-    theme_color: '#2563eb', // bg-blue-600
+    background_color: '#f3f6f8', // bg-gray-50
+    theme_color: '#0d514f', // bg-blue-600
     icons: [
       {
         src: '/icon-192x192.png',

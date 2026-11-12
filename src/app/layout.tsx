@@ -3,10 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: '#2563eb',
+  themeColor: '#0d514f',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1, // Evita zoom no input no iOS
 }
 
 const geistSans = Geist({
@@ -33,10 +32,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+// CORREÇÃO AQUI: Tipagem correta do React e idioma pt-BR
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

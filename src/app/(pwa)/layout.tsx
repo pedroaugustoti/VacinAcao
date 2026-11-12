@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { Home, Syringe, User } from 'lucide-react'
+import PwaNav from '@/components/pwa/PwaNav'
+import { HeartPulse } from 'lucide-react'
 
 // Desliga o cache estático para todas as telas do paciente
 export const instant = false 
@@ -10,30 +10,20 @@ export default function PwaLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-gray-200 flex justify-center selection:bg-blue-100">
+    <div className="va-patient min-h-screen flex justify-center selection:bg-blue-100">
       
-      <div className="w-full max-w-md bg-gray-50 min-h-screen relative shadow-2xl flex flex-col overflow-hidden">
+      <div className="va-patient-frame w-full max-w-md min-h-screen relative flex flex-col">
+        <a href="#conteudo-paciente" className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:p-3">Pular para o conteúdo</a>
+        <div className="va-patient-brand flex items-center justify-between gap-3 px-6 py-5">
+          <div className="flex items-center gap-2.5"><span className="va-sidebar-brand flex h-9 w-9 items-center justify-center rounded-xl"><HeartPulse size={20} aria-hidden="true" /></span><p className="text-lg font-bold tracking-tight text-sky-950">Vacin<span className="text-teal-700">Ação</span></p></div>
+          <span className="text-xs font-medium text-slate-600">Área do paciente</span>
+        </div>
         
-        <main className="flex-1 overflow-y-auto pb-20 no-scrollbar">
+        <main id="conteudo-paciente" tabIndex={-1} className="min-w-0 flex-1 pb-[calc(6rem+env(safe-area-inset-bottom))]">
           {children}
         </main>
 
-        <nav className="absolute bottom-0 w-full bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center pb-safe">
-          <Link href="/" className="flex flex-col items-center gap-1 text-blue-600">
-            <Home size={24} strokeWidth={2.5} />
-            <span className="text-[10px] font-semibold">Início</span>
-          </Link>
-          
-          <Link href="/doses" className="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 transition-colors">
-            <Syringe size={24} strokeWidth={2.5} />
-            <span className="text-[10px] font-semibold">Doses</span>
-          </Link>
-          
-          <Link href="/perfil" className="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 transition-colors">
-            <User size={24} strokeWidth={2.5} />
-            <span className="text-[10px] font-semibold">Perfil</span>
-          </Link>
-        </nav>
+        <PwaNav/>
       </div>
     </div>
   )
